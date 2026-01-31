@@ -903,8 +903,9 @@ MonoBehaviour:
   aliens: []
   horizontalSpacing: 8
   verticalSpacing: 5
-  alienBaseMoveSpeed: 0.01
+  alienBaseMoveSpeed: 0.02
   moveDownLength: 120
+  ufoTimeLength: 2000
   alien: {fileID: 8823576281087653601, guid: a961036f7989f15438f13dd46b70d9a9, type: 3}
 --- !u!4 &788973232
 Transform:

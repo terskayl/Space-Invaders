@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Schema;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
@@ -20,13 +21,18 @@ public class GlobalAlien : MonoBehaviour
     public float moveDownLength;
     private float moveDownSteps;
     private bool setMoveDownSteps = false;
+
+    public float ufoTimeLength = 3000;
+    private float ufoTimer;
     // Start is called before the first frame update
     void Start()
     {
+        ufoTimer = ufoTimeLength;
         DoReset(0.0f);
     }
 
     public GameObject alien;
+    private GameObject ufo;
     public void DoReset(float spawnOffset)
     {
 
@@ -54,6 +60,18 @@ public class GlobalAlien : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ufoTimer--;
+        if (ufoTimer == 0)
+        {
+            ufo = Instantiate(alien, new Vector3(50, 2, -35), alien.transform.rotation);
+            ufoTimer = ufoTimeLength;
+        }
+
+        if (ufo != null)
+        {
+            ufo.transform.position -= 10 * alienMoveSpeed * Vector3.right;
+        }
+
         float farSideOffset = swarmOffset.x - 10 * horizontalSpacing;
 
         if (swarmOffset.x > 45.0f || farSideOffset < -45.0f)

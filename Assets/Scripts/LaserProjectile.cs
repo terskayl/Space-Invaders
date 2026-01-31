@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Serialization.Json;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LaserProjectile : MonoBehaviour
@@ -10,7 +8,7 @@ public class LaserProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        thrust.z = 4000.0f;
+        thrust.z = 800.0f;
 
         GetComponent<Rigidbody>().drag = 0;
         GetComponent<Rigidbody>().AddForce(-thrust);
@@ -33,19 +31,21 @@ public class LaserProjectile : MonoBehaviour
         {
             Alien alien = collider.gameObject.GetComponent<Alien>();
             alien.Die();
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Rigidbody rigidbody = GetComponent<Rigidbody>();
+            rigidbody.AddForce(thrust);
         }
         else if (collider.CompareTag("AlienProjectile"))
         {
             AlienProjectile alienProjectile = collider.gameObject.GetComponent<AlienProjectile>();
             alienProjectile.Die();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else if (collider.CompareTag("Shield"))
         {
             Shield shield = collider.gameObject.GetComponent<Shield>();
             shield.Hit();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else
         {
@@ -55,6 +55,6 @@ public class LaserProjectile : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

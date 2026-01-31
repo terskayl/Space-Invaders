@@ -9,7 +9,7 @@ public class AlienProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        thrust.z = 4000.0f;
+        thrust.z = 800.0f;
 
         GetComponent<Rigidbody>().drag = 0;
         GetComponent<Rigidbody>().AddForce(thrust);

@@ -8,12 +8,14 @@ public class Alien : MonoBehaviour
     public float bulletSpawnChance;
     public float shotCooldown;
     private float nextReadyTime;
+    public bool isAlive;
     // Start is called before the first frame update
     void Start()
     {
         bulletSpawnChance = 0.0001f;
         shotCooldown = 0.75f;
         nextReadyTime = 0.0f;
+        isAlive = true;
     }
 
     public GameObject alienProjectile;
@@ -32,6 +34,16 @@ public class Alien : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (!isAlive)
+        {
+            // Give gravity
+            Rigidbody rigidbody = GetComponent<Rigidbody>();
+            rigidbody.AddForce(new Vector3(0, 0, 10));
+        }
+    }
+
     public GameObject explosionParticles;
     public AudioClip alienDeath;
     public void Die()
@@ -43,6 +55,7 @@ public class Alien : MonoBehaviour
         GameObject global = GameObject.Find("globalObject");
         Global g = global.GetComponent<Global>();
         g.score += 10;
-        Destroy(gameObject);
+        isAlive = false;
+        //Destroy(gameObject);
     }
 }

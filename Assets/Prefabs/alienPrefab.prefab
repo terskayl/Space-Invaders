@@ -100,6 +100,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 218736499194991935}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9828ec25254540458e2780ea5c93b5b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4770786936692088855}
   m_SourcePrefab: {fileID: 100100000, guid: e9828ec25254540458e2780ea5c93b5b, type: 3}
 --- !u!1 &8823576281087653601 stripped
 GameObject:
@@ -126,7 +130,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.07716772, y: 0.06365787, z: 0.1}
+  m_Size: {x: 0.07716772, y: 0.06365787, z: 0.03}
   m_Center: {x: 0, y: 0.00086586294, z: -0.001580418}
 --- !u!114 &218736499194991935
 MonoBehaviour:
@@ -142,9 +146,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawnChance: 0
   shotCooldown: 0
+  isAlive: 0
   alienProjectile: {fileID: 2571480715076357, guid: 3a9050048e6f6f942bdea254f3dc049c,
     type: 3}
   alienShoot: {fileID: 8300000, guid: 0ab7e09d38e21a349a7f7177468690b6, type: 3}
   explosionParticles: {fileID: 7635428987317544255, guid: 434607a96d75eca43902c739da17e971,
     type: 3}
   alienDeath: {fileID: 8300000, guid: 98202b934b5bf6b40a836bd5e04d9ff2, type: 3}
+--- !u!54 &4770786936692088855
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8823576281087653601}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
