@@ -106,7 +106,7 @@ public class GlobalAlien : MonoBehaviour
         int count = 0;
         foreach (GameObject alien in aliens)
         {
-            if (alien != null)
+            if (alien != null && alien.GetComponent<Alien>().isAlive)
             {
                 alien.transform.position += alienMoveSpeed * alienMoveDirection;
                 count++;

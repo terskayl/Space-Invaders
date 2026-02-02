@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class AlienProjectile : MonoBehaviour
 {
     public Vector3 thrust;
+
+    private bool onFloor = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +30,7 @@ public class AlienProjectile : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Collider collider = collision.collider;
-        if (collider.CompareTag("LaserBase"))
+        if (collider.CompareTag("LaserBase") && !onFloor)
         {
             LaserBase laserBase = collider.gameObject.GetComponent<LaserBase>();
             laserBase.Die();
@@ -41,6 +44,10 @@ public class AlienProjectile : MonoBehaviour
             Shield shield = collider.gameObject.GetComponent<Shield>();
             shield.Hit();
             Destroy(gameObject);
+        }
+        else if (collider.CompareTag("Floor"))
+        {
+            onFloor = true;
         }
     }
     public void Die()

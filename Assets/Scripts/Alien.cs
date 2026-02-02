@@ -12,7 +12,7 @@ public class Alien : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletSpawnChance = 0.0001f;
+        bulletSpawnChance = 0.00005f;
         shotCooldown = 0.75f;
         nextReadyTime = 0.0f;
         isAlive = true;
@@ -57,5 +57,20 @@ public class Alien : MonoBehaviour
         g.score += 10;
         isAlive = false;
         //Destroy(gameObject);
+    }
+
+    public void CorpseDie()
+    {
+
+        AudioSource.PlayClipAtPoint(alienDeath, gameObject.transform.position);
+        Instantiate(explosionParticles, gameObject.transform.position, Quaternion.AngleAxis(-90, Vector3.right));
+
+        GameObject global = GameObject.Find("globalObject");
+        Global g = global.GetComponent<Global>();
+        if (g.charge < 3)
+        {
+            g.charge += 1;
+        }
+        Destroy(gameObject);
     }
 }

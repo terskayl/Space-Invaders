@@ -9,6 +9,8 @@ public class Global : MonoBehaviour
     public int lives;
     public float alienOffset;
 
+    public int charge;
+
     public GameObject gameOverPanel;
     private bool gameOverTriggered = false;
 
@@ -44,6 +46,8 @@ public class Global : MonoBehaviour
     public GameObject shield;
     public void Reset()
     {
+        charge = 0;
+
         gameOverTriggered = false;
         lives = 3;
         gameOverPanel.SetActive(false);
@@ -54,10 +58,10 @@ public class Global : MonoBehaviour
             Destroy(sh);
         }
 
-        Instantiate(shield, new Vector3(15, 0, 23), shield.transform.rotation);
-        Instantiate(shield, new Vector3(39, 0, 23), shield.transform.rotation);
-        Instantiate(shield, new Vector3(-15, 0, 23), shield.transform.rotation);
-        Instantiate(shield, new Vector3(-39, 0, 23), shield.transform.rotation);
+        Instantiate(shield, new Vector3(15, 0, 17), shield.transform.rotation);
+        Instantiate(shield, new Vector3(39, 0, 17), shield.transform.rotation);
+        Instantiate(shield, new Vector3(-15, 0, 17), shield.transform.rotation);
+        Instantiate(shield, new Vector3(-39, 0, 17), shield.transform.rotation);
 
 
         GameObject global = GameObject.Find("globalAlien");
